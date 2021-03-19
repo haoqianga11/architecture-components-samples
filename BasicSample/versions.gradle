@@ -22,7 +22,7 @@
 ext.deps = [:]
 def versions = [:]
 versions.activity = '1.1.0'
-versions.android_gradle_plugin = '4.0.0'
+versions.android_gradle_plugin = '4.1.2'
 versions.annotations = "1.0.0"
 versions.apache_commons = "2.5"
 versions.appcompat = "1.2.0-alpha02"
@@ -219,8 +219,25 @@ deps.work = work
 ext.deps = deps
 
 def addRepos(RepositoryHandler handler) {
+    // 添加阿里云 maven 地址
+    handler.maven { url 'https://maven.aliyun.com/repository/central' }
+    handler.maven { url 'https://maven.aliyun.com/repository/public' }
+
+    handler.maven { url 'https://maven.aliyun.com/repository/google' }
+    handler.maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+
+    // 以上的原地址
+    handler.maven { url 'https://repo1.maven.org/maven2/' }
+    handler.maven { url 'https://jcenter.bintray.com/' }
+
+    handler.maven { url 'https://maven.google.com/' }
+    handler.maven { url 'https://plugins.gradle.org/m2/' }
+
+    handler.maven { url 'https://google.bintray.com/' }
+
+    handler.maven { url 'http://jitpack.io' }
+    //handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     handler.google()
     handler.jcenter()
-    handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
 }
 ext.addRepos = this.&addRepos
